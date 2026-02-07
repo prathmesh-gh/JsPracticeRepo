@@ -8,6 +8,9 @@ let accountState;   // if we only declaired variables and not use it javascript 
  accountEmaiI = "mp@google.com"
  accountPassword = "000345"
  accountCity="kolhapur"
+ 
+/*Prefer not to use var
+because of issue in block scope and functional scope*/
 
 
 // console. log (accountld) ;
