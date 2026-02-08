@@ -27,14 +27,14 @@ const bigNumber = 21651545616546515648n // if you put n in front of number it is
 const heros = ["Spidy", "hulk", "iornman"]   // 
 
 //objects
-let myObj={
-    name:"Prathmesh",           // type is Object
-    age:25
+let myObj = {
+    name: "Prathmesh",           // type is Object
+    age: 25
 }
 
 //function
 
-const myFunction  = function(){
+const myFunction = function () {
     console.log("Hello I am Function");
 }
 
@@ -65,3 +65,36 @@ Object (native or host and does implement [[Call]]) → "function"
 Object (host and does not implement [[Call]]) → Implementation-defined (but may not be "undefined", "boolean", "number", or "string")
 
 */
+
+
+
+//******************************************************************
+
+
+// Memory allocations 
+
+// Stack (Primitive) => copy of value we get
+
+let myYoutubename = "hiteshchoudharydotcom"
+let anothername = myYoutubename
+anothername = "chaiaurcode"
+
+console.log(anothername);    // cppy of original value
+console.log(myYoutubename);  //orignal value
+
+// Heap (Non-Premetive) => refrence we get
+// example  let mySkillArray[]
+
+let userOne = {
+    email: "user@google.com",
+    upi: "user@ybl"
+}
+
+let usertwo = userOne;
+
+usertwo.email = "pm@google.com"  // we can acess properties or valuses using fot operator
+
+console.log(userOne.email);
+console.log(usertwo.email);  // value  of user one email change to pm@google.com because we take refrence from user one 
+
+
