@@ -1,9 +1,12 @@
+
 .container {
   width: 575px;
   height: 825px;
 
   background-color: #797978;
   padding-left: 30px;
+     margin: 0 auto;/*    👈 THIS LINE CENTERS IT */
+
 }
 #height,
 #weight {
@@ -30,7 +33,7 @@ button {
   margin-left: 90px;
   margin-top: 25px;
   background-color: #fff;
-  padding: 1px 30px;
+  padding: 1px 0px;
   border-radius: 8px;
   color: #212121;
   text-decoration: none;
