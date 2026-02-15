@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+
+    // // all events run sequentially in javascript
+    // //way 1 : can give less features
+    // document.getElementById('owl').onclick=function(){
+    //     alert("owl clicked")
+    // }
+    //way2
+    // document.getElementById('owl').addEventListener('click',function () {
+    //             alert("owl clicked again")
+    // })
+    // // way3 : attchevent  ()
+    // //jquery -on eventlistner
+
+
+
+    // -------------------- EVENT Object --------------------
+    
+    document.getElementById("owl").addEventListener("click",function (e) {
+        console.log(e); //get browser event and windows event
+      },
+      false,
+    ); //false is default
+    /*
+    // excercise : type ,timestamp,defaultPrevented,
+    // target,toElement,srcElement
+    //client position x and y,screen x,screeny
+    //altkey,ctrlkey,shiftkey,keyCode
+
+    */
+
+
+
+
+
+    // -------------------- EVENT BUBBLING EXAMPLE --------------------
+
+// Event listener on the PARENT element (ul with id="images")
+
+// document.getElementById("images").addEventListener(
+//   "click",
+//   function (e) {
+//     console.log("click inside ul");
+
+//     // This event runs when:
+//     // 1) You click directly on the <ul>
+//     // 2) OR you click on any child element inside <ul>
+//     // Because of EVENT BUBBLING
+
+//     // e.target  -> the actual element that was clicked
+//     // e.currentTarget -> the element on which the event listener is attached
+//     console.log("Target element:", e.target);
+//     console.log("Current element:", e.currentTarget);
+//   },
+//   false // false means event bubbling (default behavior)
+// );
+
+// ---------------------------------------------------------------
+
+// Event listener on the CHILD element (img or li with id="owl")
+
+// document.getElementById("owl").addEventListener(
+//   "click",
+//   function (e) {
+//     console.log("owl clicked");
+
+//     // This runs FIRST because the click happens on the child
+//     // Then the event bubbles up to the parent (ul)
+
+//     // Stop bubbling if needed
+//     // e.stopPropagation();
+//   },
+//   false // bubbling mode
+// );
+
+/*
+-------------------- OUTPUT EXPLANATION --------------------
+
+If you click on "owl":
+
+Output:
+owl clicked
+click inside ul
+
+Reason:
+1) Event triggered on child (owl)
+2) Event bubbles UP to parent (images)
+
+-------------------- IMPORTANT NOTES --------------------
+
+1) false → Event Bubbling (child → parent) [default]
+2) true  → Event Capturing (parent → child)
+3) e.target → element that was actually clicked
+4) e.currentTarget → element on which listener is attached
+5) e.stopPropagation() → stops event from going to parent
+
+-------------------- INTERVIEW ONE-LINER --------------------
+
+Event bubbling allows parent elements to handle events
+triggered by their child elements.
+*/
+
+
+
+
+
+
+
+
+
+// -------------------- EVENT CAPTURING EXAMPLE --------------------
+
+// Event listener on the PARENT element (ul with id="images")
+
+// document.getElementById("images").addEventListener(
+//   "click",
+//   function (e) {
+//     console.log("click inside ul (CAPTURING)");
+
+//     // This runs FIRST in capturing phase
+//     // Event travels from parent → child
+//   },
+//   true // true enables EVENT CAPTURING
+// );
+
+// ---------------------------------------------------------------
+
+// Event listener on the CHILD element (img or li with id="owl")
+
+// document.getElementById("owl").addEventListener(
+//   "click",
+//   function (e) {
+//     console.log("owl clicked (CAPTURING)");
+
+//     // This runs AFTER parent in capturing mode
+//   },
+//   true // capturing mode
+// );
+
+/*
+-------------------- OUTPUT EXPLANATION --------------------
+
+If you click on "owl":
+
+Output:
+click inside ul (CAPTURING)
+owl clicked (CAPTURING)
+
+Reason:
+1) Event starts from TOP (parent)
+2) Then goes DOWN to the child
+
+-------------------- IMPORTANT NOTES --------------------
+
+1) true  → Event Capturing (parent → child)
+2) false → Event Bubbling (child → parent)
+3) Capturing is rarely used, but important to understand
+4) Bubbling is default behavior in JavaScript
+
+-------------------- INTERVIEW ONE-LINER --------------------
+
+Event capturing handles events in the top-down order,
+from parent elements to child elements.
+*/
+
+
+
+
+
+// -------------------- STOP PROPAGATION --------------------
+
+// // Parent element
+// document.getElementById("images").addEventListener(
+//   "click",
+//   function () {
+//     console.log("UL clicked");
+//   },
+//   false // bubbling mode
+// );
+
+// // Child element
+// document.getElementById("owl").addEventListener( "click", function (e) {
+// console.log("Owl clicked");
+//     // This stops the event from going to parent
+//     e.stopPropagation();
+//   },
+//   false
+// );
+
+/*
+-------------------- OUTPUT --------------------
+
+If you click on "owl":
+
+Output:
+Owl clicked
+
+"UL clicked" will NOT print
+
+-------------------- WITHOUT stopPropagation --------------------
+
+Output would be:
+Owl clicked
+UL clicked
+
+-------------------- IMPORTANT NOTES --------------------
+
+1) stopPropagation() stops event flow
+2) Works for BOTH:
+   - Event Bubbling
+   - Event Capturing
+3) Parent event listener will NOT be triggered
+
+-------------------- INTERVIEW ONE-LINER --------------------
+
+stopPropagation() prevents an event from
+bubbling up or capturing down the DOM tree.
+*/
+
+
+// Event listener on Google link
+document.getElementById("google").addEventListener("click",(e) => {
+    console.log("google clicked");
+
+    e.preventDefault();   // stops opening google.com
+    e.stopPropagation(); // stops event from bubbling to parent
+  },
+  false // bubbling phase (default)
+);
+
+
+
+document.querySelector("#images").addEventListener("click",function (e) {
+    console.log(e.target.tagName);  // Prints the tag name of clicked element (IMG, LI, UL, etc.)
+   
+    // let removeIt = e.target.parentNode; //// parentNode = <li> which contains the image
+    // removeIt.remove();                  //    // Removes the entire <uL> from DOM
+
+
+      // Check if the clicked element is an IMG
+  if (e.target.tagName === "IMG") {
+    
+    // Prints the id of clicked image
+    console.log(e.target.id);
+
+    // parentNode = <li> which contains the image
+    let removeIt = e.target.parentNode;
+
+    // Removes the entire <li> from DOM
+    removeIt.remove();
+  }
+
+  },
+  false // bubbling mode
+);
+
+
+  </script>
+</html>
