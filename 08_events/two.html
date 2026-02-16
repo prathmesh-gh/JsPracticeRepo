@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timeOut Functions</title>
+  </head>
+  <body>
+    <h1>Javascript learning</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const sayMyName = () => {
+      console.log("jack");
+    };
+
+    const changeText = () => {
+      document.querySelector("h1").innerHTML = "best Js series";
+    };
+    setTimeout(sayMyName, 2000);
+    const changeMe = setTimeout(changeText, 4000);
+    
+    document.querySelector("#stop").addEventListener("click", () => {
+      clearTimeout(changeMe);
+      console.log("Stopped the timeout");
+   });
+  </script>
+</html>
