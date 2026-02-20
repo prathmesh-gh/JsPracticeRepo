@@ -1,0 +1,80 @@
+<!-- closure : gives a access of outer function to inner function even after the
+outer function has executed 
+//lexical scope : gives a access of outer function
+to inner function even after the outer function has executed  -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur chai</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    // function outer(){
+    //     let username = "hitesh"
+    //     console.log("OUTER", secret);        //error: secret is not defined (not able to access secret)
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log("inner", username);
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo", username);
+    //         console.log(secret);
+    //     }
+    //     inner()
+    //     innerTwo()
+
+    // }
+    // outer()
+    // console.log("TOO OUTER", username);
+
+
+    ///////////////  closure ///////////////////
+
+    // function makeFunc() {
+    //   const name = "Mozilla";
+    //   function displayName() {
+    //     console.log(name);
+    //   }
+    //   return displayName;       //returns displayname as a refrence
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+
+
+
+
+
+
+
+
+
+
+
+
+    //Example : clousre and lexical scoping
+    document.getElementById("orange").onclick = function () {
+      document.body.style.backgroundColor = `orange`;
+    };
+    document.getElementById("green").onclick = function () {
+      document.body.style.backgroundColor = `green`;
+    };
+
+    function clickHandler(color) {
+    //   document.body.style.backgroundColor = `${color}`;
+
+      return function(){
+        document.body.style.backgroundColor = `${color}`
+      }
+    }
+
+       document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")  </script>
+</html>
