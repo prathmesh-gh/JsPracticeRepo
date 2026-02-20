@@ -1,6 +1,6 @@
 
 const User={
-    _email: "pm@example.co", 
+    _email: "pm@example.com", 
     _password: "123abc",
 
     get email(){

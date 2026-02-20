@@ -22,8 +22,8 @@ function User(email, password){
 
 }
 
-const prathmesh = new User("pm@example.co","123abc");
+const prathmesh = new User("pm@example.com","123abc");
 
-console.log(prathmesh.email); // output PM@EXAMPLE.CO
+console.log(prathmesh.email); // output PM@EXAMPLE.com
 
 
